@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dice-game-web
+    container_name: dice-game-web
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: web
+      SERVICE_TAGS: dev
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8000:80"
+    networks:
+      - dice-game-network
+
+  db:
+    image: mysql:5.7
+    container_name: dice-game-db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: dice_game
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - dice-game-network
+
+volumes:
+  db_data:
+
+networks:
+  dice-game-network:
+    driver: bridge

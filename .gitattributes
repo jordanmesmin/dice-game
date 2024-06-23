@@ -1,0 +1,16 @@
+# Normaliser les fins de ligne pour différents types de fichiers
+* text=auto
+
+# Assurez-vous que les fichiers de script utilisent LF
+*.sh text eol=lf
+*.php text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.blade.php text eol=lf
+
+# Pour les fichiers binaires, ne pas convertir les fins de ligne
+*.png binary
+*.jpg binary
+*.gif binary
+*.exe binary
