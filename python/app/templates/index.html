@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration du jeu de lancé de dé</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h2>Configuration du jeu de lancé de dé</h2>
+    <form action="." method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="nombre_joueur">Nombre de joueurs :</label>
+            {{ form.nombre_joueur }}
+            <!-- <input type="number" id="nombre_joueur" name="nombre_joueur" min="1" required> -->
+        </div>
+        <div> 
+            <label for="nombre_des">Nombre de dés :</label>
+            <!-- <input type="number" id="nombre_des" name="nombre_des" min="1" required> -->
+            {{ form.nombre_des }}
+
+        </div> 
+        <div>  
+            <label for="nombre_partie">Nombre de parties :</label>
+            <!-- <input type="number" id="nombre_partie" name="nombre_partie" min="1" required> -->
+            {{ form.nombre_partie }}
+        </div>
+        <div>  
+            <label for="temps_attente">Temps d'attente entre chaque partie (en secondes) :</label>
+            <!-- <input type="number" id="temps_attente" name="temps_attente" min="5"> -->
+            {{ form.temps_attente }}
+        </div> 
+        <div> 
+            <button type="submit">Valider les configurations</button>
+            <button type="reset" class="Annuler">Annuler les configurations</button>
+        </div> 
+    </form>
+</body>
+</html>
