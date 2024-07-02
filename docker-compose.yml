@@ -1,10 +1,6 @@
-version: '3.8'
-
 services:
   laravel:
-    build:
-      context: ./laravel
-      dockerfile: Dockerfile
+    build: ./laravel
     container_name: laravel_app
     restart: unless-stopped
     ports:
